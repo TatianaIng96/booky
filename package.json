@@ -1,0 +1,27 @@
+{
+  "name": "booky",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.3",
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@strapi/plugin-graphql": "^4.13.6",
+    "bootstrap": "^5.3.2",
+    "cdbreact": "^1.5.18",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.4.19",
+    "graphql": "^16.8.0",
+    "next": "13.4.19",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "18.2.0",
+    "react-parallax": "^3.5.1",
+    "react-scroll-parallax": "^3.4.2"
+  }
+}

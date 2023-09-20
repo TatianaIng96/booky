@@ -1,0 +1,8 @@
+.bg{
+  background-color: #384225; 
+  z-index: 9999;
+  position: static;
+}
+.white{
+  color: white !important;
+}
