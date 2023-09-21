@@ -1,5 +1,22 @@
 .half-screen-carousel {
-  max-width: 50%; /* Establece el ancho máximo al 50% de la pantalla */
+  max-width: 70%; /* Establece el ancho máximo al 50% de la pantalla */
   margin: 0 auto; /* Centra horizontalmente el carrusel en su contenedor */
   /* Puedes agregar más estilos según tus preferencias, como altura, etc. */
+}
+.bg{
+  background-color: #384225 !important; 
+  border: none !important;
+  border-color: #384225 !important;
+  background: #384225 !important ;
+}
+.wh{
+  width: 100% !important;
+  background-color: #262525 !important; 
+}
+.pd{
+  margin-left: 2em;
+}
+
+.buy{
+  background-color: #8d950b !important;
 }

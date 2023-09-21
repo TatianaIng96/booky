@@ -1,13 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import style from "./footer.module.css";
 
 export const Footer = () => {
   return (
-    <footer className="bg-body-tertiary text-light py-4">
+    <footer className={`${style.bgfooter} text-white py-4`}>
       <div className="container">
         <div className="row">
-          <div className="col-md-6 text-dark">
+          <div className="col-md-6 text-white">
             <h5>Contacto</h5>
             <p>Dirección: 123 Calle Principal, Ciudad</p>
             <p>Email: ejemplo@email.com</p>

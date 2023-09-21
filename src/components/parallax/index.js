@@ -1,38 +1,8 @@
-// import Link from "next/link";
-// import { Parallax } from "react-scroll-parallax";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import style from "./stile.module.css";
-
-// export default () => (
-//   <>
-//     <Link href="/">
-//       <h1>Homepage</h1>
-//     </Link>
-
-//     <h1>Homepage</h1>
-
-//     <div className={style.content}>
-//       <Parallax offsetYMin={200} offsetYMax={1500}>
-//         <h2>Moving A</h2>
-//       </Parallax>
-//       <Parallax offsetYMin={-500} offsetYMax={2000}>
-//         <h2>Moving C</h2>
-//       </Parallax>
-//     </div>
-
-//     <style jsx>
-//       {`
-//         .content {
-//           margin-top: 300px;
-//           border: 2px solid grey;
-//           height: 1500px;
-//         }
-//       `}
-//     </style>
-//   </>
-// );
 import React from "react";
 import { render } from "react-dom";
+import Form from "react-bootstrap/Form";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Button from "react-bootstrap/Button";
 import { Parallax, Background } from "react-parallax";
 import style from "./stile.module.css";
 
@@ -42,9 +12,13 @@ const ParallaxComponent = () => (
   <div>
     <Parallax bgImage={imageDemo} strength={500}>
       <div style={{ height: 500 }}>
-        <h1 className={style.content}>Welcome to Booky</h1>
+        <h1 className={style.content}>
+          Welcome to Booky, your ultimate literary destination! On our platform,
+          you will find a world of literary possibilities waiting for you.
+        </h1>
+        <Button className={`${style.sinup}`}>Sign Up</Button>
         <p className={style.parraph}>
-          Este sitio web está pensado para que tengas la mejor experiencia
+          The literary adventure awaits you in Booky!
         </p>
       </div>
     </Parallax>

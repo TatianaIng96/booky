@@ -17,11 +17,14 @@
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "graphql": "^16.8.0",
+    "mdb-react-ui-kit": "^6.3.0",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
     "react-parallax": "^3.5.1",
-    "react-scroll-parallax": "^3.4.2"
+    "react-scroll-parallax": "^3.4.2",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1"
   }
 }

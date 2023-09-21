@@ -38,20 +38,23 @@ const CarouselVertical = ({}) => {
   }, [cards]);
 
   return (
-    <div className="col-md-12">
+    <div className={`${styles.bg} col-md-12 bg-dark`}>
       <div className={styles["half-screen-carousel"]}>
         <Carousel activeIndex={index} onSelect={() => {}}>
           {cards.map((card, cardIndex) => (
             <Carousel.Item key={cardIndex}>
-              <div className="card">
+              <div key={index} className={`${styles.wh} card`}>
                 <img
+                  alt={card.title}
                   src={card.imageUrl}
                   className="card-img-top"
-                  alt={card.title}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{card.title}</h5>
-                  <p className="card-text">{card.description}</p>
+                  <h2 className="card-title text-white">{card.title}</h2>
+                  <p className="card-text text-white">{card.description}</p>
+                  <button className={`${styles.buy} btn text-white`}>
+                    Buy Now
+                  </button>
                 </div>
               </div>
             </Carousel.Item>

@@ -1,12 +1,27 @@
 .content {
  color: white;
- margin-top: 5em;
- margin-left: 3em;
+ margin-top: 3em;
+ margin-left: 3.5em;
+ margin-bottom: 2em;
+ font-size: 24px;
+ width: 250px;
 }
 
 .parraph{
   color: white;
-  margin-top: 20em;
-  margin-left: 10em;
+  margin-top: -2.5em;
+  margin-left: 1em;
   width: 250px;
+  font-weight: 600;
+}
+
+.sinup{
+  margin-left: 17em;
+  background-color: #8d950b;
+  border-color: #849006;
+  margin-top: 12em;
+}
+.search{
+  width: 250px;
+  margin-left: 2em;
 }

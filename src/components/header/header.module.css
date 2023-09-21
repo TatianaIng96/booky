@@ -6,3 +6,10 @@
 .white{
   color: white !important;
 }
+.login{
+  background-color: #8d950b !important; 
+  border-color: #849006 !important;
+}
+.search{
+  margin-right: 1em;
+}

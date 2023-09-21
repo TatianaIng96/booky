@@ -1,0 +1,5 @@
+.bgfooter{
+  background-color: #262525 ; 
+  z-index: 9999;
+  position: static;
+}
