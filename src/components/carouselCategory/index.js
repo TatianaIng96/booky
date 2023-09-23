@@ -3,7 +3,7 @@ import styles from "./category.module.css";
 import React, { Component } from "react";
 import Slider from "react-slick";
 
-const CarouselCategory = () => {
+const CarouselCategory = ({ data }) => {
   const cards = [
     {
       imageUrl:
@@ -83,7 +83,7 @@ const CarouselCategory = () => {
     centerMode: true,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 3,
+    slidesToShow: 4,
     speed: 500,
     rows: 1,
     slidesPerRow: 2,
@@ -92,7 +92,7 @@ const CarouselCategory = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 3,
           infinite: true,
           dots: true,
@@ -127,17 +127,23 @@ const CarouselCategory = () => {
   return (
     <div className={`${styles.pd} content`}>
       <Slider {...settings}>
-        {cards.map((card, index) => (
+        {data.carousels.data.map((card, index) => (
           <div key={index} className={`${styles.wh} card`}>
             <img
-              alt={card.title}
-              src={card.imageUrl}
+              alt={card.attributes.name}
+              src={`http://127.0.0.1:1337${card.attributes.img.data.attributes.url}`}
               width="100"
-              height="200"
+              height="300"
               className={`${styles.radius} card-img-top`}
             />
             <div className="card-body">
-              <h2 className="card-title text-white">{card.title}</h2>
+              <h4 className="card-title text-white">{card.attributes.name}</h4>
+              <p className="card-text text-white">
+                {card.attributes.name.autor}
+              </p>
+              <button className={`${styles.buy} btn text-white`}>
+                Buy Now
+              </button>
             </div>
           </div>
         ))}

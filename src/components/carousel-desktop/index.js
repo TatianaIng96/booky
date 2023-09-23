@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./carouselDesk.module.css";
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
 import Slider from "react-slick";
 
-const CarouselHorizontal = () => {
+const CarouselHorizontal = ({ data }) => {
   const cards = [
     {
       imageUrl:
@@ -82,23 +83,25 @@ const CarouselHorizontal = () => {
   };
 
   return (
-    <div className={`${styles.pd} content`}>
+    <div className={`${styles.pd} content mb-12`}>
       <Slider {...settings}>
-        {cards.map((card, index) => (
+        {data.carousels.data.map((card, index) => (
           <div key={index} className={`${styles.wh} card`}>
             <img
-              alt={card.title}
-              src={card.imageUrl}
+              alt={card.attributes.name}
+              src={`http://127.0.0.1:1337${card.attributes.img.data.attributes.url}`}
               width="100"
-              height="200"
+              height="300"
               className={`${styles.radius} card-img-top`}
             />
             <div className="card-body">
-              <h2 className="card-title text-white">{card.title}</h2>
-              <p className="card-text text-white">{card.description}</p>
-              <button className={`${styles.buy} btn text-white`}>
+              <h4 className="card-title text-white">{card.attributes.name}</h4>
+              <p className="card-text text-white">
+                {card.attributes.name.autor}
+              </p>
+              <Button className={`${styles.buy} btn text-white`}>
                 Buy Now
-              </button>
+              </Button>
             </div>
           </div>
         ))}

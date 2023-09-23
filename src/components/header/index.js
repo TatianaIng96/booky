@@ -7,7 +7,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import style from "./header.module.css";
 function NavScrollExample() {
   return (
-    <Navbar expand="lg" className={style.bg}>
+    <Navbar expand="lg">
       <Container fluid>
         <Navbar.Brand href="/home" className="text-white">
           Booky{" "}
@@ -49,11 +49,14 @@ function NavScrollExample() {
                 Search
               </Button>
             </Form>
+            <Button variant="outline-primary" className={`${style.login} me-2`}>
+              Login
+            </Button>
             <Button
               variant="outline-primary"
-              className={`${style.login} me-2 text-white`}
+              className={`${style.singup} btn-primary me-2`}
             >
-              Login
+              Sign up
             </Button>
           </div>
         </Navbar.Collapse>

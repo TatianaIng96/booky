@@ -1,6 +1,6 @@
 .wh{
   width: 90% !important;
-  background-color: #262525 !important; 
+  background-color:#260e30!important; 
   border-radius: 20px 20px 20px 20px !important;
 }
 .pd{
@@ -8,7 +8,8 @@
 }
 
 .buy{
-  background-color: #8d950b !important;
+  background-color: #5116ae !important;
+  border: #5116ae;
 }
 
 .radius{

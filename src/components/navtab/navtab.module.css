@@ -1,0 +1,6 @@
+.nav{
+  padding: 1em;
+  @media (min-width:768px) {
+    padding: 2em;
+  }
+}

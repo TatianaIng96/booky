@@ -11,13 +11,15 @@ const Vision = () => {
     },
   ];
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="row">
         <div className="col-md-6">
           <img
-            src="https://th.bing.com/th/id/R.6454e3fb5600a74863b567ae35c39840?rik=xr0jHsGUwv0CRw&riu=http%3a%2f%2fedcingenieros.com%2fimages%2fImagenesderechas%2fMisionVison.png&ehk=GqASY4KA5SFIYdgUYatXOKlQYiHj22EKLrEq9jDvtj0%3d&risl=&pid=ImgRaw&r=0"
+            src="/vision.jpg"
             alt="Imagen"
-            className="img-fluid"
+            className="img-fluid rounded-circle"
+            width="400"
+            height="400"
           />
         </div>
         <div className="col-md-6 text-white d-flex flex-column justify-content-center m-12 p12">

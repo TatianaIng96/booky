@@ -20,9 +20,11 @@ const TextItem = () => {
       <div className="row">
         <div className="col-md-6">
           <img
-            src="https://o.remove.bg/downloads/b3f504d7-2e84-465a-a057-c57de26f0af4/7174.png_860-removebg-preview.png"
+            src="/function.png"
             alt="Imagen"
-            className="img-fluid"
+            className="img-fluid rounded-circle"
+            height="500"
+            width="500"
           />
         </div>
         <div className="col-md-6 text-white d-flex flex-column justify-content-center m-12 p12">

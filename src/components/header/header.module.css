@@ -7,9 +7,13 @@
   color: white !important;
 }
 .login{
-  background-color: #8d950b !important; 
-  border-color: #849006 !important;
+  color: #5116ae !important; 
+  background-color: white !important;
 }
 .search{
   margin-right: 1em;
+}
+.singup{
+  color: #5116ae !important; 
+  background-color: white !important;
 }

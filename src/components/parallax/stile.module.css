@@ -1,25 +1,45 @@
 .content {
  color: white;
  margin-top: 3em;
- margin-left: 3.5em;
- margin-bottom: 2em;
+ margin-left: 1em;
+ margin-bottom: 1em;
  font-size: 24px;
- width: 250px;
+ width: 340px;
+
+ @media (min-width:768px) and (max-width:1023px) {
+  margin-left: 9em;
+  width: 450px;
+ }
 }
 
 .parraph{
   color: white;
-  margin-top: -2.5em;
-  margin-left: 1em;
+  margin-top: 13.5em;
+  margin-left: 5em;
   width: 250px;
   font-weight: 600;
+
+  @media (min-width:768px) and (max-width:1023px) {
+    margin-top: 3.5em;
+    margin-left: 14em;
+   }
 }
 
-.sinup{
-  margin-left: 17em;
-  background-color: #8d950b;
-  border-color: #849006;
-  margin-top: 12em;
+.buy{
+  
+  background-color: #5116ae;
+  border-color: #5116ae;
+  margin-left: 6em;
+  width: 100px;
+
+  @media (min-width:768px) and (max-width:1023px) {
+    margin-left: 14em;
+   }
+}
+
+.sell{
+  background-color: #5116ae;
+  border-color: #5116ae;
 }
 .search{
   width: 250px;
