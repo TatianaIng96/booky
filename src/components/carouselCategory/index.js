@@ -136,7 +136,7 @@ const CarouselCategory = ({ data }) => {
               height="300"
               className={`${styles.radius} card-img-top`}
             />
-            <div className="card-body">
+            {/* <div className="card-body">
               <h4 className="card-title text-white">{card.attributes.name}</h4>
               <p className="card-text text-white">
                 {card.attributes.name.autor}
@@ -144,7 +144,7 @@ const CarouselCategory = ({ data }) => {
               <button className={`${styles.buy} btn text-white`}>
                 Buy Now
               </button>
-            </div>
+            </div> */}
           </div>
         ))}
       </Slider>

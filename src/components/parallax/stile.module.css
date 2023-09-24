@@ -1,14 +1,31 @@
 .content {
  color: white;
- margin-top: 3em;
+ margin-top: 0em;
  margin-left: 1em;
  margin-bottom: 1em;
  font-size: 24px;
  width: 340px;
 
+ @media (min-width:540px) and (max-width:767px) {
+  margin-top: 7em;
+  margin-left: 2em;
+  width: 340px;
+ }
  @media (min-width:768px) and (max-width:1023px) {
-  margin-left: 9em;
-  width: 450px;
+  margin-top: 7em;
+  margin-left: 2em;
+  width: 340px;
+ }
+
+ @media (min-width:1024px) and (max-width:1200px) {
+  margin-top: 7em;
+  margin-left: 3em;
+  width: 340px;
+ }
+ @media (min-width:1201px){
+  margin-top: 9em;
+  margin-left: 10em;
+  width: 340px;
  }
 }
 
@@ -19,27 +36,59 @@
   width: 250px;
   font-weight: 600;
 
+  @media (min-width:540px) and (max-width:767px) {
+    margin-top: 2.5em;
+    margin-left: 2em;
+  }
+
   @media (min-width:768px) and (max-width:1023px) {
     margin-top: 3.5em;
-    margin-left: 14em;
-   }
+    margin-left: 5em;
+  }
+  @media (min-width:1024px) and (max-width:1200px) {
+    margin-top: 3.5em;
+    margin-left: 4em;
+  }
+  @media (min-width:1201px){
+    margin-top: 3.5em;
+    margin-left: 15em;
+  }
 }
 
 .buy{
   
   background-color: #5116ae;
   border-color: #5116ae;
-  margin-left: 6em;
-  width: 100px;
-
+  margin-left: 14em;
+  @media (min-width:540px) and (max-width:767px) {
+    margin-left: 5em;
+  }
   @media (min-width:768px) and (max-width:1023px) {
-    margin-left: 14em;
-   }
+    margin-left: 5em;
+  }
+  @media (min-width:1024px) and (max-width:1600px) {
+    margin-left: 19em;
+  }
 }
 
 .sell{
   background-color: #5116ae;
   border-color: #5116ae;
+  @media (min-width:540px) and (max-width:767px) {
+    margin-left: -8em;
+  }
+  @media (min-width:768px) and (max-width:1023px) {
+    margin-left: -15em;
+  }
+  @media (min-width:1024px) and (max-width:1200px) {
+    margin-left: -19em;
+  }
+  @media (min-width:1201px) and (max-width:1400px) {
+    margin-left: -15em;
+  }
+  @media (min-width:1401px) {
+    margin-left: -20em;
+  }
 }
 .search{
   width: 250px;

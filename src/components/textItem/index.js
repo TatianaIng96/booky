@@ -1,24 +1,11 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
+import styles from "./item.module.css";
 
-const TextItem = () => {
-  const text = [
-    {
-      title: "Why Choose Booky?",
-      description:
-        "At Booky, we offer a unique experience for book buyers and sellers. By joining us, you will be able to enjoy the following benefits:",
-      beneficio: [
-        "Buy affordable books and discover new readings.",
-        "Sell your used books and earn extra money.",
-        "Browse through a wide variety of genres and authors.",
-        "Secure transactions and buyer protection.",
-      ],
-    },
-  ];
+const TextItem = ({ data }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-4">
           <img
             src="/function.png"
             alt="Imagen"
@@ -27,14 +14,13 @@ const TextItem = () => {
             width="500"
           />
         </div>
-        <div className="col-md-6 text-white d-flex flex-column justify-content-center m-12 p12">
-          <h3>{text[0].title}</h3>
-          <p> {text[0].description}</p>
+        <div className="col-md-8 text-white d-flex flex-column justify-content-center m-12 p12">
+          <h2 className={styles.title}>{data.title}</h2>
+          <p> {data.description}</p>
           <ul>
-            <li>{text[0].beneficio[0]}</li>
-            <li>{text[0].beneficio[1]}</li>
-            <li>{text[0].beneficio[2]}</li>
-            <li>{text[0].beneficio[3]}</li>
+            {data.functions.data.map((element) => {
+              return <li>{element.attributes.item}</li>;
+            })}
           </ul>
         </div>
       </div>

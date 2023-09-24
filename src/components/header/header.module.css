@@ -9,11 +9,15 @@
 .login{
   color: #5116ae !important; 
   background-color: white !important;
+  height: 40px;
 }
 .search{
   margin-right: 1em;
+  height: 40px;
 }
 .singup{
-  color: #5116ae !important; 
-  background-color: white !important;
+  color: white !important; 
+  background-color: #5116ae !important;
+  border-color: #5116ae !important;
+  height: 40px;
 }

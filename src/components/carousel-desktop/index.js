@@ -3,6 +3,7 @@ import styles from "./carouselDesk.module.css";
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Slider from "react-slick";
+import Image from "next/image";
 
 const CarouselHorizontal = ({ data }) => {
   const cards = [
@@ -90,9 +91,9 @@ const CarouselHorizontal = ({ data }) => {
             <img
               alt={card.attributes.name}
               src={`http://127.0.0.1:1337${card.attributes.img.data.attributes.url}`}
-              width="100"
-              height="300"
               className={`${styles.radius} card-img-top`}
+              width="350" // Ancho deseado de la imagen
+              height="400"
             />
             <div className="card-body">
               <h4 className="card-title text-white">{card.attributes.name}</h4>

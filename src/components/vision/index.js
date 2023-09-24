@@ -1,30 +1,31 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
+const apiUrl = publicRuntimeConfig.API_URL_STRAPI;
 
-const Vision = () => {
-  const text = [
-    {
-      title: "Our Vision",
-      description:
-        " At Booky, our vision is to foster a love of reading and literature around the world. We believe in the importance of sharing andenjoying unforgettable stories. We want to connect book lovers everywhere, making it easy to buy and sell used and new books in anaccessible and reliable way.",
-      beneficio: [],
-    },
-  ];
+const Vision = ({ data }) => {
+  const imageDemo = data?.image.data.attributes.url;
   return (
-    <div className="container mt-4">
+    <div className="container">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-4">
           <img
-            src="/vision.jpg"
+            src={`${apiUrl}${imageDemo}`}
             alt="Imagen"
             className="img-fluid rounded-circle"
             width="400"
             height="400"
           />
         </div>
-        <div className="col-md-6 text-white d-flex flex-column justify-content-center m-12 p12">
-          <h3>{text[0].title}</h3>
-          <p> {text[0].description}</p>
+        <div className="col-md-8 text-white d-flex flex-column justify-content-center m-12 p12">
+          <h1 className="mt-4 justify-content-center text-center ">
+            {data?.title}
+          </h1>
+          <h4 className="mt-4 justify-content-center text-center ">
+            {" "}
+            {data?.description}
+          </h4>
         </div>
       </div>
     </div>

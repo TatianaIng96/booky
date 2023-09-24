@@ -1,34 +1,36 @@
 import React from "react";
-import { render } from "react-dom";
-import Form from "react-bootstrap/Form";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import { Parallax, Background } from "react-parallax";
 import style from "./stile.module.css";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
-const imageDemo = "/parallax.jpg";
-const ParallaxComponent = () => (
-  <div>
-    <Parallax bgImage={imageDemo} strength={500}>
-      <div style={{ height: 500 }}>
-        <h1 className={`${style.content}`}>
-          Welcome to Booky, your ultimate literary destination! On our platform,
-          you will find a world of literary possibilities waiting for you.
-        </h1>
-        <p className={style.parraph}>
-          The literary adventure awaits you in Booky!
-        </p>
-        <div className="row">
-          <div className="col">
-            <Button className={`${style.buy}`}>Buy Book</Button>
-          </div>
-          <div className="col">
-            <Button className={`${style.sell}`}>Sell Book</Button>
+const ParallaxComponent = ({ data }) => {
+  const apiUrl = publicRuntimeConfig.API_URL_STRAPI;
+  const imageDemo = data.image.data.attributes.url;
+
+  return (
+    <div>
+      <Parallax bgImage={`${apiUrl}${imageDemo}`} strength={500}>
+        <div style={{ height: 500 }}>
+          <h1 className={`${style.content}`}>{data.description}</h1>
+          <p className={style.parraph}>{data.slogan}</p>
+          <div className="row">
+            <div className="col">
+              <Button className={`${style.buy}`}>
+                {data.buttonBuy[0].title}
+              </Button>
+            </div>
+            <div className="col">
+              <Button className={`${style.sell}`}>
+                {data.buttonSell[0].title}
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
-    </Parallax>
-  </div>
-);
+      </Parallax>
+    </div>
+  );
+};
 
 export default ParallaxComponent;
