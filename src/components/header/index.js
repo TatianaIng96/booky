@@ -5,7 +5,18 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import style from "./header.module.css";
+import { useRouter } from "next/router";
+
 function NavScrollExample() {
+  const router = useRouter();
+
+  const handleSingUp = () => {
+    router.push("/singup");
+  };
+
+  const handleLogin = () => {
+    router.push("/login");
+  };
   return (
     <Navbar expand="lg">
       <Container fluid>
@@ -49,12 +60,17 @@ function NavScrollExample() {
                 Search
               </Button>
             </Form>
-            <Button variant="outline-primary" className={`${style.login} me-2`}>
+            <Button
+              variant="outline-primary"
+              className={`${style.login} me-2`}
+              onClick={handleLogin}
+            >
               Login
             </Button>
             <Button
               variant="outline-primary"
               className={`${style.singup} btn-primary me-2`}
+              onClick={handleSingUp}
             >
               Sign up
             </Button>

@@ -18,8 +18,8 @@ const TextItem = ({ data }) => {
           <h2 className={styles.title}>{data.title}</h2>
           <p> {data.description}</p>
           <ul>
-            {data.functions.data.map((element) => {
-              return <li>{element.attributes.item}</li>;
+            {data.functions.data.map((element, index) => {
+              return <li key={index}>{element.attributes.item}</li>;
             })}
           </ul>
         </div>

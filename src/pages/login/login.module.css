@@ -1,0 +1,19 @@
+.sing{
+  width: 300px;
+  background-color: white;
+  height: 350px;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 10px;
+  @media(min-width:768px) {
+    width: 450px;
+  }
+}
+
+.secction{
+  margin-top: 2em;
+  height: 500px;
+}
+.text{
+  padding-top: 1em;
+}
