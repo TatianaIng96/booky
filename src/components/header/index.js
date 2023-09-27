@@ -6,16 +6,33 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import style from "./header.module.css";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 function NavScrollExample() {
   const router = useRouter();
+  const userSession = Cookies.get("userSession");
+  const sessionData = userSession ? JSON.parse(userSession) : null;
+  const [login, setLogin] = useState("Login");
 
+  useEffect(() => {
+    if (sessionData) {
+      setLogin("Logout");
+    } else {
+      setLogin("Login");
+    }
+  }, [login, userSession]);
   const handleSingUp = () => {
     router.push("/singup");
   };
 
   const handleLogin = () => {
-    router.push("/login");
+    if (login === "Login") {
+      router.push("/login");
+    } else if (login === "Logout") {
+      Cookies.remove("userSession");
+      router.push("/home");
+    }
   };
   return (
     <Navbar expand="lg">
@@ -65,15 +82,17 @@ function NavScrollExample() {
               className={`${style.login} me-2`}
               onClick={handleLogin}
             >
-              Login
+              {login}
             </Button>
-            <Button
-              variant="outline-primary"
-              className={`${style.singup} btn-primary me-2`}
-              onClick={handleSingUp}
-            >
-              Sign up
-            </Button>
+            {login === "Login" && (
+              <Button
+                variant="outline-primary"
+                className={`${style.singup} btn-primary me-2`}
+                onClick={handleSingUp}
+              >
+                Sign up
+              </Button>
+            )}
           </div>
         </Navbar.Collapse>
       </Container>

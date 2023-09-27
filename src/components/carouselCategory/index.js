@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./category.module.css";
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { Button } from "react-bootstrap";
+import { ArrowRight } from "react-bootstrap-icons";
 
 const CarouselCategory = ({ data }) => {
   const cards = [
@@ -148,6 +150,12 @@ const CarouselCategory = ({ data }) => {
           </div>
         ))}
       </Slider>
+      <div className={styles.explore}>
+        <Button className="text-white">
+          {" "}
+          Explore more books <ArrowRight />{" "}
+        </Button>
+      </div>
     </div>
   );
 };

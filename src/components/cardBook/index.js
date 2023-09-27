@@ -1,11 +1,33 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../carousel-desktop/carouselDesk.module.css";
+import styles from "./card.module.css";
 import React, { Component } from "react";
-import Slider from "react-slick";
-import Image from "next/image";
 import { Card, Button, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Cart } from "react-bootstrap-icons";
 
-const CardBook = ({ data }) => {
+const CardBook = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/books");
+
+        if (!response.ok) {
+          throw new Error("La petición no fue exitosa");
+        }
+
+        const responseData = await response.json();
+        setData(responseData.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error al realizar la petición GET:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const cards = [
     {
       imageUrl:
@@ -38,22 +60,39 @@ const CardBook = ({ data }) => {
       description: "hola mundo",
     },
   ];
+
+  if (loading) {
+    return <div> Loading...</div>;
+  }
   return (
     <div className="container">
       <Row>
-        {cards.map((card, index) => (
-          <Col key={index} sm={12} md={6} lg={4} xl={3}>
-            <Card
-              style={{ width: "18rem" }}
-              className={`${styles.wh} text-white`}
-            >
-              <Card.Img variant="top" src={card.imageUrl} />
-              <Card.Body>
-                <Card.Title>{card.title}</Card.Title>
-                <Card.Text>{card.description}</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
+        {data.map((card) => (
+          <Col key={card._id} sm={12} md={6} lg={4} xl={3}>
+            <div className={`${styles.wh} card`}>
+              <Card
+                style={{ width: "18rem" }}
+                className={`${styles.wh} text-white`}
+              >
+                <img
+                  alt={card.title}
+                  src={card.image}
+                  width="248" // Ancho deseado de la imagen
+                  height="260"
+                  className={`${styles.radius} card-img-top`}
+                />
+                <Card.Body>
+                  <h6>{card.title}</h6>
+                  <p> PRICE: {card.price}</p>
+                  <div className="col">
+                    <Button variant="primary">Details</Button>
+                    <Button variant="primary">
+                      <Cart />
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </div>
           </Col>
         ))}
       </Row>

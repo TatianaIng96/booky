@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+
 const Testimonial = ({ data }) => {
   return (
     <section className="mb-4">

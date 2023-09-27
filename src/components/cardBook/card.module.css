@@ -1,0 +1,19 @@
+.wh{
+  width: 250px !important;
+  background-color: #260e30 !important; 
+  border-radius: 20px 20px 20px 20px !important;
+  margin-bottom: 0.5em;
+}
+.pd{
+  margin-left: 2em;
+  margin-bottom: 4em;
+}
+
+.buy{
+  background-color: #5116ae !important;
+  border: #5116ae;
+}
+
+.radius{
+  border-radius: 20px 20px 0px 0px !important;
+}
