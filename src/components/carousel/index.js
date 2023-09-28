@@ -8,19 +8,18 @@ const CarouselVertical = ({}) => {
   const cards = [
     {
       imageUrl:
-        "https://th.bing.com/th/id/R.d9c2773b1c241854571d1bdad23af4a5?rik=Au1AINhvAWZmRg&riu=http%3a%2f%2f4.bp.blogspot.com%2f-QMGOoEe7ORo%2fUictQ1DRsJI%2fAAAAAAAB4ow%2fQ3F1jbR67fo%2fs1600%2fcerca-del-cielo-y-los-planetas-im%c3%a1genes-de-fantas%c3%ada-close-to-sky-landscape-1920x1200-wallpaper-.jpg&ehk=7N3VXXUF7ESxVu%2fJqYAG2lwflwMsjAwn7hdRxBGsJms%3d&risl=&pid=ImgRaw&r=0",
-      title: "card1",
+        "https://statics.cdn1.buscalibre.com/portada-minibanner-feria-lib-im-col-png",
       description: "hola mundo",
     },
     {
       imageUrl:
-        "https://3.bp.blogspot.com/-e4rYTSwn8Fg/UYGHHTzFX4I/AAAAAAABwKk/CoymthQWNKs/s1600/hermoso-atardecer-amazing-sunset.jpg",
+        "https://storage.googleapis.com/ln-archivos/banner/extralarge/6ad25884-9179-eb25-5cdd-64f10ac47ef2_imagen_web.png",
       title: "card2",
       description: "hola mundo",
     },
     {
       imageUrl:
-        "https://th.bing.com/th/id/R.70659ea0f4fdba2e09598ae4f4349a41?rik=Sj2GGGrViYn99g&riu=http%3a%2f%2f3.bp.blogspot.com%2f-AsLdW2Mcjig%2fUtL71YiY2zI%2fAAAAAAAAY5g%2fo2zmYBKKWqY%2fs1600%2f360681.jpg&ehk=SxPqRVy8AI4%2burvA%2frZIog6jAXfklQdDsJBpKqkWGuA%3d&risl=&pid=ImgRaw&r=0",
+        "https://storage.googleapis.com/ln-archivos/banner/extralarge/2e877970-1d80-0c43-6ff3-650a03f5d6f6_imagen_web.jpg",
       title: "card3",
       description: "hola mundo",
     },
@@ -38,30 +37,25 @@ const CarouselVertical = ({}) => {
   }, [cards]);
 
   return (
-    <div className={`${styles.bg} col-md-12 bg-dark`}>
-      <div className={styles["half-screen-carousel"]}>
-        <Carousel activeIndex={index} onSelect={() => {}}>
-          {cards.map((card, cardIndex) => (
-            <Carousel.Item key={cardIndex}>
-              <div key={index} className={`${styles.wh} card`}>
-                <img
-                  alt={card.title}
-                  src={card.imageUrl}
-                  className="card-img-top"
-                />
-                <div className="card-body">
-                  <h2 className="card-title text-white">{card.title}</h2>
-                  <p className="card-text text-white">{card.description}</p>
-                  <button className={`${styles.buy} btn text-white`}>
-                    Buy Now
-                  </button>
-                </div>
-              </div>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </div>
-    </div>
+    <Carousel
+      className={`border-bottom border-5 `}
+      activeIndex={index}
+      onSelect={() => {}}
+    >
+      {cards.map((card, cardIndex) => (
+        <Carousel.Item key={cardIndex}>
+          <div key={index} className={`${styles.wh}`}>
+            <img
+              alt={card.title}
+              src={card.imageUrl}
+              className="card-img-top"
+              width="1500"
+              height="300"
+            />
+          </div>
+        </Carousel.Item>
+      ))}
+    </Carousel>
   );
 };
 

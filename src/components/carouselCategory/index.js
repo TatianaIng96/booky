@@ -130,7 +130,7 @@ const CarouselCategory = ({ data }) => {
     <div className={`${styles.pd} content`}>
       <Slider {...settings}>
         {data.carousels.data.map((card, index) => (
-          <div key={index} className={`${styles.wh} card`}>
+          <div key={index} className={`${styles.wcard} card`}>
             <img
               alt={card.attributes.name}
               src={`http://127.0.0.1:1337${card.attributes.img.data.attributes.url}`}

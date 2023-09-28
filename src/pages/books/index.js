@@ -1,141 +1,68 @@
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
-import getConfig from "next/config";
+import { useState, useEffect } from "react";
 import SectionSeparator from "@/components/separator";
 import CardBook from "@/components/cardBook";
-const { publicRuntimeConfig } = getConfig();
-const apiUrl = publicRuntimeConfig.API_URL_STRAPI;
+import CarouselVertical from "@/components/carousel";
+import FilterSidebar from "@/components/filter";
+import "bootstrap/dist/css/bootstrap.min.css";
+import style from "./book.module.css";
 
-const Book = ({ carouselData }) => {
+const Book = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const categories = ["Ficción", "No ficción", "Ciencia", "Historia"]; // Lista de categorías
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    // Filtra los libros según la categoría seleccionada y actualiza filteredBooks
+    const filtered = setFilteredBooks(filtered); // Realiza la lógica de filtrado aquí
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/books");
+
+        if (!response.ok) {
+          throw new Error("La petición no fue exitosa");
+        }
+
+        const responseData = await response.json();
+        setData(responseData.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error al realizar la petición GET:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div> Loading...</div>;
+  }
   return (
     <div>
-      <CardBook data={carouselData} />
+      <CarouselVertical />
+      <div className="container">
+        <div className="row">
+          <div className={`col-md-2 `}>
+            <FilterSidebar
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onSelectCategory={handleCategorySelect}
+            />
+          </div>
+          <div className="col-md-10 ">
+            <h3 className={` ${style.h2} text-white border-bottom border-5`}>
+              {" "}
+              Los libros más vendidos... !
+            </h3>
+            <CardBook data={data} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 export default Book;
-
-export const getStaticProps = async () => {
-  const client = new ApolloClient({
-    uri: `${apiUrl}/graphql`,
-    cache: new InMemoryCache(),
-  });
-
-  const carouselQuery = gql`
-    query carousel {
-      carousels {
-        data {
-          attributes {
-            name
-            autor
-            img {
-              data {
-                attributes {
-                  url
-                  width
-                  height
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const bookyQuery = gql`
-    query booky {
-      booky {
-        data {
-          attributes {
-            header {
-              slogan
-              description
-              buttonBuy {
-                title
-              }
-              buttonSell {
-                title
-              }
-              image {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-            }
-            text {
-              descriptonOne
-              descriptionTwo
-            }
-            vision {
-              title
-              description
-              image {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-            }
-            whyBooky {
-              title
-              benefits {
-                data {
-                  attributes {
-                    title
-                    description
-                    image {
-                      data {
-                        attributes {
-                          url
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            textTwo {
-              descriptonOne
-              descriptionTwo
-            }
-            functional {
-              title
-              description
-              image {
-                data {
-                  attributes {
-                    url
-                  }
-                }
-              }
-              functions {
-                data {
-                  attributes {
-                    item
-                  }
-                }
-              }
-            }
-            testimonial {
-              title
-              description
-            }
-          }
-        }
-      }
-    }
-  `;
-
-  const carouselData = await client.query({ query: carouselQuery });
-  const bookyData = await client.query({ query: bookyQuery });
-
-  return {
-    props: {
-      carouselData: carouselData.data,
-      bookyData: bookyData.data,
-    },
-  };
-};

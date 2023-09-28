@@ -3,15 +3,9 @@
   margin: 0 auto; /* Centra horizontalmente el carrusel en su contenedor */
   /* Puedes agregar más estilos según tus preferencias, como altura, etc. */
 }
-.bg{
-  background-color: #384225 !important; 
-  border: none !important;
-  border-color: #384225 !important;
-  background: #384225 !important ;
-}
 .wh{
   width: 100% !important;
-  background-color: #262525 !important; 
+  margin-bottom: 0em;
 }
 .pd{
   margin-left: 2em;
@@ -19,4 +13,7 @@
 
 .buy{
   background-color: #8d950b !important;
+}
+.purple{
+  border-color: purple !important;
 }

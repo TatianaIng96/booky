@@ -1,8 +1,14 @@
 .wh{
-  width: 250px !important;
+  width: 200px !important;
   background-color: #260e30 !important; 
   border-radius: 20px 20px 20px 20px !important;
   margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+.wcard{
+  width: 220px !important;
+  background-color: #260e30 !important; 
+  border-radius: 20px 20px 20px 20px !important;
 }
 .pd{
   margin-left: 2em;
