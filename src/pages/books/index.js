@@ -5,19 +5,28 @@ import CarouselVertical from "@/components/carousel";
 import FilterSidebar from "@/components/filter";
 import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./book.module.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addProducts } from "@/store/products/productsSlice";
 
 const Book = () => {
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const categories = ["Ficción", "No ficción", "Ciencia", "Historia"]; // Lista de categorías
+  const [data, setData] = useState(null);
+  const productsList = useSelector((state) => state.products.items);
+  const dispatch = useDispatch();
+
+  const categories = [
+    "Ficción",
+    "No ficción",
+    "Ciencia",
+    "Historia",
+    "herotica",
+    "romantica",
+    "terror",
+    "impredecible",
+  ]; // Lista de categorías
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredBooks, setFilteredBooks] = useState([]);
-
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    // Filtra los libros según la categoría seleccionada y actualiza filteredBooks
-    const filtered = setFilteredBooks(filtered); // Realiza la lógica de filtrado aquí
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +39,7 @@ const Book = () => {
 
         const responseData = await response.json();
         setData(responseData.data);
+        dispatch(addProducts(responseData.data));
         setLoading(false);
       } catch (error) {
         console.error("Error al realizar la petición GET:", error);
@@ -38,8 +48,19 @@ const Book = () => {
     fetchData();
   }, []);
 
+  const handleCategorySelect = (category) => {
+    console.log(category);
+    // setSelectedCategory(category);
+    // // Filtra los libros según la categoría seleccionada y actualiza filteredBooks
+    // const filtered = setFilteredBooks(filtered); // Realiza la lógica de filtrado aquí
+  };
+
   if (loading) {
-    return <div> Loading...</div>;
+    <div className="d-flex justify-content-center">
+      <div className="spinner-border" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>;
   }
   return (
     <div>
@@ -58,7 +79,7 @@ const Book = () => {
               {" "}
               Los libros más vendidos... !
             </h3>
-            <CardBook data={data} />
+            <CardBook data={productsList} />
           </div>
         </div>
       </div>

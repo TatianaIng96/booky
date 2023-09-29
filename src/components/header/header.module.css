@@ -3,11 +3,19 @@
   z-index: 9999;
   position: static;
 }
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #380d7d;
+}
 .white{
   color: white !important;
 }
 .login{
-  color: #5116ae !important; 
+  color:blue !important; 
   background-color: white !important;
   height: 40px;
 }
@@ -17,7 +25,7 @@
 }
 .singup{
   color: white !important; 
-  background-color: #5116ae !important;
-  border-color: #5116ae !important;
+  background-color: #150ba6 !important;
+  border-color: #150ba6 !important;
   height: 40px;
 }

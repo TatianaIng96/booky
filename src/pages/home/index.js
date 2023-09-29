@@ -13,8 +13,12 @@ import getConfig from "next/config";
 import SectionSeparator from "@/components/separator";
 const { publicRuntimeConfig } = getConfig();
 const apiUrl = publicRuntimeConfig.API_URL_STRAPI;
+import { useSelector } from "react-redux";
 
 const Home = ({ carouselData, bookyData }) => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const total = useSelector((state) => state.cart.total);
+  const totalPrice = cartItems.reduce((a, b) => a + b.totalPrice, 0).toFixed(2);
   //console.log(bookyData.booky.data.attributes.header);
 
   const headerData = bookyData.booky.data.attributes.header;
@@ -27,6 +31,7 @@ const Home = ({ carouselData, bookyData }) => {
   return (
     <>
       <div>
+        {console.log(totalPrice)}
         <ParallaxComponent data={headerData} />
         <TextCategory data={textData[0]} />
         <CarouselHorizontal data={carouselData} />

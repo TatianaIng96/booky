@@ -7,13 +7,18 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import style from "./header.module.css";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import Cart from "../cart";
 import Cookies from "js-cookie";
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { cartActions } from "@/store/cart/cartSlice";
 
 function NavScrollExample() {
   const router = useRouter();
   const userSession = Cookies.get("userSession");
   const sessionData = userSession ? JSON.parse(userSession) : null;
   const [login, setLogin] = useState("Login");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (sessionData) {
@@ -22,6 +27,7 @@ function NavScrollExample() {
       setLogin("Login");
     }
   }, [login, userSession]);
+
   const handleSingUp = () => {
     router.push("/singup");
   };
@@ -31,11 +37,12 @@ function NavScrollExample() {
       router.push("/login");
     } else if (login === "Logout") {
       Cookies.remove("userSession");
+      dispatch(cartActions.resetCart());
       router.push("/home");
     }
   };
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className={`${style.header}`}>
       <Container fluid>
         <Navbar.Brand href="/home" className="text-white">
           Booky{" "}
@@ -50,10 +57,10 @@ function NavScrollExample() {
             <Nav.Link href="/home" className="text-white">
               Home
             </Nav.Link>
-            <Nav.Link href="#action2" className="text-white">
+            <Nav.Link href="/books" className="text-white">
               Books
             </Nav.Link>
-            <NavDropdown
+            {/* <NavDropdown
               title={<span className="text-white">Categories</span>}
               id="navbarScrollingDropdown"
             >
@@ -64,7 +71,7 @@ function NavScrollExample() {
             </NavDropdown>
             <Nav.Link href="#" disabled>
               Link
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
           <div className="ml-auto d-flex">
             <Form className={`${style.search} d-flex`}>
@@ -84,6 +91,9 @@ function NavScrollExample() {
             >
               {login}
             </Button>
+            <Link href="/cart-details">
+              <Cart />
+            </Link>
             {login === "Login" && (
               <Button
                 variant="outline-primary"

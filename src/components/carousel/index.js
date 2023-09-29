@@ -38,7 +38,7 @@ const CarouselVertical = ({}) => {
 
   return (
     <Carousel
-      className={`border-bottom border-5 `}
+      className={`border-bottom border-5  ${styles.top}`}
       activeIndex={index}
       onSelect={() => {}}
     >

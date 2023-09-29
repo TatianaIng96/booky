@@ -1,10 +1,47 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./card.module.css";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import { Cart } from "react-bootstrap-icons";
+import { Plus } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { showAlert } from "@/store/alerts/alertsSlice";
+import { cartActions } from "@/store/cart/cartSlice";
+import { useSelector } from "react-redux";
+import Timer from "../timer";
+import Link from "next/link";
 
 const CardBook = ({ data }) => {
+  const dispatch = useDispatch();
+  const [disable, setDisable] = useState(false);
+
+  const handleClick = (product) => {
+    if (disable) {
+      dispatch(
+        showAlert({
+          active: true,
+          message: "The product could not be added - offer time is out",
+          type: "error",
+        })
+      );
+    } else {
+      dispatch(
+        showAlert({
+          active: true,
+          message: "The product was added successfully",
+          type: "success",
+        })
+      );
+      dispatch(
+        cartActions.addItemToCart({
+          title: product.title,
+          price: product.price,
+          id: product._id,
+          image: product.image,
+        })
+      );
+    }
+  };
+
   return (
     <div className="container">
       <Row>
@@ -27,8 +64,12 @@ const CardBook = ({ data }) => {
                   <p> PRICE: {card.price}</p>
                   <div className="col">
                     <Button variant="primary">Details</Button>
-                    <Button variant="primary">
-                      <Cart />
+                    <Button
+                      variant="primary"
+                      className={styles.ml}
+                      onClick={() => handleClick(card)}
+                    >
+                      Add <Plus />
                     </Button>
                   </div>
                 </Card.Body>

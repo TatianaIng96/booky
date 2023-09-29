@@ -3,6 +3,9 @@
   margin: 0 auto; /* Centra horizontalmente el carrusel en su contenedor */
   /* Puedes agregar más estilos según tus preferencias, como altura, etc. */
 }
+.top{
+  margin-top: 4em;
+}
 .wh{
   width: 100% !important;
   margin-bottom: 0em;

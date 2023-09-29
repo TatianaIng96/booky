@@ -1,0 +1,14 @@
+.filter{
+  margin-top: 3em;
+  margin-left: -2.5em;
+}
+
+.wh{
+  width: 205px;
+  margin-bottom: 1em;
+}
+
+.li{
+  background: transparent;
+  cursor: pointer;
+}
