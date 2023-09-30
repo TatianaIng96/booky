@@ -25,6 +25,8 @@ const CartDetails = () => {
   } else {
     return (
       <div className={`${style.top} container`}>
+        {console.log(cartItems)}
+        {console.log(totalPrice)}
         <div className="row">
           <div className={`col-lg-8`}>
             <Card className={`${style.col_one}`}>
@@ -68,7 +70,19 @@ const CartDetails = () => {
                 </div>
               </Card.Body>
             </Card>
-            {/* Agrega aquí tu sección de pago */}
+            <Card className={`${style.col_two} `}>
+              <Card.Header as="h5" className="text-white">
+                Cart Totals
+              </Card.Header>
+              <Card.Body>
+                <div>
+                  <p className="text-white">Total Books: {total}</p>
+                </div>
+                <div>
+                  <p className="text-white">Total Price: ${totalPrice}</p>
+                </div>
+              </Card.Body>
+            </Card>
           </div>
         </div>
       </div>
