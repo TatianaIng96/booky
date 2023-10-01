@@ -31,6 +31,7 @@ const Login = () => {
             token,
             name: profile.firstName,
             email: profile.email,
+            id: profile.id,
           })
         );
         // const userSession = Cookies.get("userSession");

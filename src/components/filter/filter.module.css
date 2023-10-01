@@ -1,11 +1,29 @@
 .filter{
   margin-top: 3em;
-  margin-left: -2.5em;
+  margin-left: 2.5em;
+  width: 280px;
+
+  @media (min-width:400px) and (max-width:1023px) {
+    margin-top: 3em;
+    margin-left: -2em;
+    width: 150px;
+  }
+  @media (min-width:1024px) {
+    margin-top: 3em;
+    margin-left: -2.5em;
+    width: 200px;
+  }
 }
 
 .wh{
-  width: 205px;
+  width: 280px;
   margin-bottom: 1em;
+  @media (min-width:400px) and (max-width:1023px) {
+    width: 150px;
+  }
+  @media (min-width:1024px) {
+    width: 200px;
+  }
 }
 
 .li{

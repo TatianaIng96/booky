@@ -3,5 +3,9 @@
 }
 .h2{
   margin-top: 1em;
-  margin-left: 1em;
+  margin-left: 0em;
+  @media (min-width: 440px) {
+    margin-top: 1em;
+    margin-left: 1em;
+  }
 }

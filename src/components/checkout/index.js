@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Checkout.scss";
+import style from "./checkout.module.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   useElements,
   useStripe,
@@ -14,13 +15,10 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const navigate = useNavigate();
 
   const transactionErrors = {
-    "Your card has insufficient funds.": () => {
-      setMessageExists(true);
-      setMessage("Insufficient funds");
-    },
+    "Your card has insufficient funds.": () =>
+      alert("No tienes fondos suficientes"),
   };
 
   const handleSubmit = async (event) => {
@@ -34,7 +32,6 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
           CardCvcElement
         ),
       });
-
       if (error) {
         setMessageExists(true);
         setMessage(`Error: ${error.message}`);
@@ -44,7 +41,7 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
         method: "POST",
         body: JSON.stringify({
           paymentMethod,
-          amount,
+          totalAmount: amount,
           sellerId,
           buyerId,
           books,
@@ -53,68 +50,66 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
           "Content-Type": "application/json",
         },
       };
-
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/api/transactions`,
+        `http://localhost:8080/api/transactions`,
         fetchConfig
       );
       if (response.ok) {
         setMessageExists(true);
         setMessage("Payment successful");
+        alert(message);
+      } else {
+        transactionErrors["Your card has insufficient funds."]();
       }
-    } catch ({ response }) {
-      transactionErrors[response.data.message]();
-      if (response.data.message === "Your card has insufficient funds.") {
-        setMessageExists(true);
-        setMessage("Insufficient funds");
-      }
+    } catch (error) {
+      transactionErrors["Your card has insufficient funds."]();
     } finally {
       elements
         .getElement(CardNumberElement, CardExpiryElement, CardCvcElement)
         .clear();
     }
-
-    navigate("/my-profile/");
+    // navigate("/my-profile/");
   };
   return (
-    <div className="checkout">
+    <div className={style.checkout}>
       <form onSubmit={handleSubmit}>
         <label>
           Card Number
-          <CardNumberElement className="stripe-input" />
+          <CardNumberElement className={style.stripe_input} />
         </label>
 
         <label>
           Expiration Date
-          <CardExpiryElement className="stripe-input" />
+          <CardExpiryElement className={style.stripe_input} />
         </label>
 
         <label>
           CVC
-          <CardCvcElement className="stripe-input" />
+          <CardCvcElement className={style.stripe_input} />
         </label>
 
-        <label className="bid">
+        <label className={style.bid}>
           Amount:{" "}
-          <span className="amount">
+          <span className={style.amount}>
             {amount}
-            <span className="currency">wETH</span>
+            <span className={style.currency}>Dollars</span>
           </span>
         </label>
 
-        <button type="submit" className="payButton">
+        <button type="submit" className={style.payButton}>
           {" "}
           Pay{" "}
         </button>
       </form>
       {messageExists && (
-        <div className="message">
+        <div className="text-white">
           {message}
           <button
             type="button"
             onClick={() => {
               return setMessageExists(false);
             }}
+            className=" btn btn-primary"
           >
             Ok
           </button>
