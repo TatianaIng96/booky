@@ -57,65 +57,74 @@ const CartDetails = () => {
     router.push("/login");
   }
   return (
-    <div className={`${style.top} container`}>
-      <div className="row">
-        <div className={`col-lg-8`}>
-          <Card className={`${style.col_one}`}>
-            <Card.Header as="h5" className="text-white">
-              Shopping Cart
-            </Card.Header>
-            <ListGroup variant="flush">
-              <div className={` d-flex flex-wrap justify-content-center `}>
-                {cartItems.map((item) => (
-                  <Col key={item.id} md={12} lg={4} className={`${style.list}`}>
-                    <CartCard
-                      id={item.id}
-                      quantity={item.quantity}
-                      image={item.image}
-                      title={item.title}
-                      price={item.price}
-                    />
-                  </Col>
-                ))}
-              </div>
-            </ListGroup>
-            <Button onClick={() => router.push("/books")}>Add book</Button>
-          </Card>
+    <>
+      {sessionData && (
+        <div className={`${style.top} container`}>
+          <div className="row">
+            <div className={`col-lg-8`}>
+              <Card className={`${style.col_one}`}>
+                <Card.Header as="h5" className="text-white">
+                  Shopping Cart
+                </Card.Header>
+                <ListGroup variant="flush">
+                  <div className={` d-flex flex-wrap justify-content-center `}>
+                    {cartItems.map((item) => (
+                      <Col
+                        key={item.id}
+                        md={12}
+                        lg={4}
+                        className={`${style.list}`}
+                      >
+                        <CartCard
+                          id={item.id}
+                          quantity={item.quantity}
+                          image={item.image}
+                          title={item.title}
+                          price={item.price}
+                        />
+                      </Col>
+                    ))}
+                  </div>
+                </ListGroup>
+                <Button onClick={() => router.push("/books")}>Add book</Button>
+              </Card>
+            </div>
+            <div className="col-lg-4">
+              <Card className={`${style.col_two} `}>
+                <Card.Header as="h5" className="text-white">
+                  Cart Totals
+                </Card.Header>
+                <Card.Body>
+                  <div>
+                    <p className="text-white">Total Books: {total}</p>
+                  </div>
+                  <div>
+                    <p className="text-white">Total Price: ${totalPrice}</p>
+                  </div>
+                </Card.Body>
+              </Card>
+              {data && (
+                <Card className={`${style.col_two} `}>
+                  <Card.Header as="h5" className="text-white">
+                    Payment
+                  </Card.Header>
+                  <Card.Body>
+                    <Elements stripe={stripePromise}>
+                      <Checkout
+                        amount={totalPrice}
+                        books={cartItems}
+                        sellerId={data.user}
+                        buyerId={sessionData.id}
+                      />
+                    </Elements>
+                  </Card.Body>
+                </Card>
+              )}
+            </div>
+          </div>
         </div>
-        <div className="col-lg-4">
-          <Card className={`${style.col_two} `}>
-            <Card.Header as="h5" className="text-white">
-              Cart Totals
-            </Card.Header>
-            <Card.Body>
-              <div>
-                <p className="text-white">Total Books: {total}</p>
-              </div>
-              <div>
-                <p className="text-white">Total Price: ${totalPrice}</p>
-              </div>
-            </Card.Body>
-          </Card>
-          {data && (
-            <Card className={`${style.col_two} `}>
-              <Card.Header as="h5" className="text-white">
-                Payment
-              </Card.Header>
-              <Card.Body>
-                <Elements stripe={stripePromise}>
-                  <Checkout
-                    amount={totalPrice}
-                    books={cartItems}
-                    sellerId={data.user}
-                    buyerId={sessionData.id}
-                  />
-                </Elements>
-              </Card.Body>
-            </Card>
-          )}
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

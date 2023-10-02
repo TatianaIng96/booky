@@ -1,38 +1,106 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Booky: Individual Project - Make it Real TOP Program v30
+
+This project was developed using Next.js for the frontend and Sass as a preprocessor for CSS. We used Node.js and Express for the backend, and MongoDB database.
+
+## Characteristics of the project:
+
+- An online marketplace to buy books.
+- Allows the user buy books.
+
 ## Getting Started
 
-First, run the development server:
+For the project to function correctly, 3 repositories must be cloned that correspond to the back-end, the front-end and the project that contains the landing page:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+1. Clone the repositories to your local machine:
+
+```
+git clone https://github.com/TatianaIng96/booky.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+git clone https://github.com/TatianaIng96/my-proyect.git
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+git clone https://github.com/TatianaIng96/back-booky.git
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+2. Change directory to /booky:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+cd booky
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Also change to /back-booky in the second repository:
 
-## Learn More
+```
+cd back-booky
+```
 
-To learn more about Next.js, take a look at the following resources:
+Also change to /my-proyect in the last repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+cd my-proyect
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Install the frontend and backend dependencies:
 
-## Deploy on Vercel
+Make sure to have installed Node.js:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+sudo apt install nodejs npm
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Then, run npm install on each of the repositories:
+
+```
+npm install
+```
+
+4. Create a `.env` file to include the backend URL.
+
+5. Run the code!
+
+Make sure to be in each repository:
+
+```
+cd booky
+```
+
+Once there, execute
+
+```
+npm run dev
+```
+
+in my-proyect run:
+
+```
+npm run develop
+```
+
+For the backend, execute the same commands. Remember to keep both running!
+
+Open [http://localhost:3000/home](http://localhost:3000) with your browser to see the result.
+
+## Built with 🛠️
+
+- Nextjs: [https://nextjs.org/](https://nextjs.org/)
+- Sass: [https://sass-lang.com/](https://sass-lang.com/)
+- Bcrypt: [https://www.npmjs.com/package/bcrypt](https://www.npmjs.com/package/bcrypt)
+- Stripe: [https://stripe.com/en-gb-us](https://stripe.com/en-gb-us)
+- SendGrid: [https://sendgrid.com/](https://sendgrid.com/)
+- JSON WebToken: [https://jwt.io/](https://jwt.io/)
+- Node.js: [https://nodejs.org/es](https://nodejs.org/es)
+- Express: [https://expressjs.com/](https://expressjs.com/)
+- MongoDB: [https://www.mongodb.com/es](https://www.mongodb.com/es)
+
+## Authors ✒️
+
+- **Leidy Tatiana Cardona** - _Developer_ - [https://github.com/TatianaIng96](https://github.com/TatianaIng96)
+
+## Acknowledgements 🎁
+
+We would like to thank the Make it Real team for providing the initial tools (and necessary help) for building this project

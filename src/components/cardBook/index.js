@@ -7,12 +7,13 @@ import { useDispatch } from "react-redux";
 import { showAlert } from "@/store/alerts/alertsSlice";
 import { cartActions } from "@/store/cart/cartSlice";
 import { useSelector } from "react-redux";
-import Timer from "../timer";
-import Link from "next/link";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 const CardBook = ({ data }) => {
   const dispatch = useDispatch();
   const [disable, setDisable] = useState(false);
+  const message = useSelector((state) => state.alerts.message);
 
   const handleClick = (product) => {
     if (disable) {
@@ -40,6 +41,7 @@ const CardBook = ({ data }) => {
         })
       );
     }
+    Swal.fire(message, "success");
   };
 
   return (

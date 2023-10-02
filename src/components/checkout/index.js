@@ -1,6 +1,12 @@
 import { useState } from "react";
 import style from "./checkout.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { cartActions } from "@/store/cart/cartSlice";
+
 import {
   useElements,
   useStripe,
@@ -15,6 +21,8 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
 
   const stripe = useStripe();
   const elements = useElements();
+  const route = useRouter();
+  const dispatch = useDispatch();
 
   const transactionErrors = {
     "Your card has insufficient funds.": () =>
@@ -57,7 +65,7 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
       if (response.ok) {
         setMessageExists(true);
         setMessage("Payment successful");
-        alert(message);
+        Swal.fire("Payment successful", "success");
       } else {
         transactionErrors["Your card has insufficient funds."]();
       }
@@ -68,7 +76,8 @@ const Checkout = ({ amount, books, sellerId, buyerId }) => {
         .getElement(CardNumberElement, CardExpiryElement, CardCvcElement)
         .clear();
     }
-    // navigate("/my-profile/");
+    dispatch(cartActions.resetCart());
+    route.push("/books");
   };
   return (
     <div className={style.checkout}>
