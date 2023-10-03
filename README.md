@@ -1,13 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # Booky: Individual Project - Make it Real TOP Program v30
 
 This project was developed using Next.js for the frontend and Sass as a preprocessor for CSS. We used Node.js and Express for the backend, and MongoDB database.
 
+Booky is a page designed to buy books online. It offers a wide selection of titles from different genres and authors. Whether you're looking for novels, non-fiction books, classic literature, or children's books, Booky has something for every book lover.
+
 ## Characteristics of the project:
 
-- An online marketplace to buy books.
-- Allows the user buy books.
+- It is a book page that allows you to buy books.
+- Allows the user to create an account, add books to the cart and purchase one or more books
 
 ## Getting Started
 
