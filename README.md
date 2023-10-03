@@ -10,7 +10,7 @@ Booky is a page designed to buy books online. It offers a wide selection of titl
 - It is a book page that allows you to buy books.
 - Allows the user to create an account, add books to the cart and purchase one or more books
 
-##Start running 🚀
+## Start running 🚀
 These instructions will allow you to obtain a copy of the running project in your local machine, for the purpose of development and testing.
 
 ## Getting Started
